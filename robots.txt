@@ -1,0 +1,13 @@
+#hexo robots.txt
+User-agent: * 
+#Crawl-delay:100
+
+Allow: /archives/
+Allow: /categorioes/
+Allow: /about/
+Allow:/sitemap/
+Allow:/contact/
+
+#sitemap
+Sitemap: https://openkit.gitee.io/sitemap.xml
+#Sitemap: https://openkit.gitee.io/baidusitemap.xml
