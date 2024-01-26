@@ -72,32 +72,10 @@
 
 
   
-  
-  <div class="site-header-image">
-    <img id="originBg" width="100%" alt="Hike News" src="">
-  </div>
-
-  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
-    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
-  </div>
-
-  <script>
-        var imgUrls = "css/images/00.jpg,css/images/01.jpg,css/images/02.jpg,css/images/03.jpg,css/images/04.jpg".split(",");
-        var random = Math.floor((Math.random() * imgUrls.length ));
-        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-          document.getElementById("originBg").src=imgUrls[random];
-          document.getElementById("blurBg").src=imgUrls[random];
-        } else {
-          document.getElementById("originBg").src='/' + imgUrls[random];
-          document.getElementById("blurBg").src='/' + imgUrls[random];
-        }
-    </script>
-
-
 
 
 <header id="allheader" class="site-header" role="banner" 
-   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.3);"  >
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -145,6 +123,88 @@
       <div id="content" class="outer">
         
           <section id="main">
+  
+    <article id="post-hexo-matery主题美化-四"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/0819/">hexo-matery主题美化(四)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/0819/" class="article-date">
+	  <time datetime="2020-08-19T00:05:52.000Z" itemprop="datePublished">八月 19, 2020</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%AB%99%E8%BF%90%E7%BB%B4/">网站运维</a>
+ 
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="hexo-matery主题美化-四"><a href="#hexo-matery主题美化-四" class="headerlink" title="hexo-matery主题美化(四)"></a>hexo-matery主题美化(四)</h4><h4 id="目录："><a href="#目录：" class="headerlink" title="目录："></a>目录：</h4><blockquote>
+<p>前言</p>
+<p>去掉banner的颜色动画</p>
+<p>添加背景壁纸</p>
+<p>修改滑动条</p>
+<p>修改导航栏、页脚及文章卡片标签的颜色</p>
+<p>修改目录样式</p>
+</blockquote>
+<h5 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h5><p>这是最后一篇关于hexo-matery博客美化的文章了，大部分都是前端的东西，所以没啥好讲的，对我来说后端更侧重一点，这些天都没怎么写Java代码了。离前一篇博客美化文章已过去一个星期了，因为我回了趟老家，住了一个星期，心里感觉很复杂。我本身技术并不是很强，每天都要实实在在的学习知识，家里条件不好，以后的路真的难走！加油吧！</p>
+<h5 id="一、去掉banner的颜色动画"><a href="#一、去掉banner的颜色动画" class="headerlink" title="一、去掉banner的颜色动画"></a>一、去掉banner的颜色动画</h5><p>有的同学可能不喜欢banner的颜色遮罩，特别是在banner图片的颜色和动画颜色一样时，表现不出图片的美观。去掉后放一张高清小姐姐大图，博客访问量一下迅速爆炸！听我的准没错，那如何去掉这个烦人的彩色动画呢？跟着我：在theme主题目录下，找到<code>matery.css</code>文件,<code>ctrl+F</code>快捷键查找<code>.bg-cover:after</code>，注释掉即可。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* .bg-cover:after &#123;</span></span><br><span class="line"><span class="comment">    -webkit-animation: rainbow 60s infinite;</span></span><br><span class="line"><span class="comment">    animation: rainbow 60s infinite;</span></span><br><span class="line"><span class="comment">&#125; */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="二、添加背景壁纸"><a href="#二、添加背景壁纸" class="headerlink" title="二、添加背景壁纸"></a>二、添加背景壁纸</h5><p>同样在matery.css文件下查找body样式,修改如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="comment">/* background-color: #eaeaea; */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">60deg</span>, <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">165</span>, <span class="number">150</span>, <span class="number">0.5</span>) <span class="number">5%</span>, <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">228</span>, <span class="number">255</span>, <span class="number">0.35</span>) ) <span class="number">0%</span> <span class="number">0%</span> /     cover, <span class="built_in">url</span>(<span class="string">&quot;https://x.png&quot;</span>), <span class="built_in">url</span>(<span class="string">&quot;https://x.jpg&quot;</span>) <span class="number">0px</span> <span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#7F95D1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果不想要图片，去掉即可，比如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">cursor</span>:<span class="built_in">url</span>(<span class="string">/cursor.svg</span>),auto;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">60deg</span>, <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">165</span>, <span class="number">150</span>, <span class="number">0.5</span>) <span class="number">5%</span>, <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">228</span>, <span class="number">255</span>, <span class="number">0.35</span>) );</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#34495e</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="三、修改滑动条（没试过，好像没用）"><a href="#三、修改滑动条（没试过，好像没用）" class="headerlink" title="三、修改滑动条（没试过，好像没用）"></a>三、修改滑动条（没试过，好像没用）</h5><p>说是说修改滑动条，但是不需要太麻烦，在matery.css中添加样式即可：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 滚动条 */</span></span><br><span class="line">::-webkit-scrollbar-thumb &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#FF2A68</span>;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">-webkit-linear-gradient</span>(<span class="number">45deg</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">4</span>) <span class="number">25%</span>,transparent <span class="number">25%</span>,transparent <span class="number">50%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">4</span>) <span class="number">50%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">4</span>) <span class="number">75%</span>,transparent <span class="number">75%</span>,transparent);</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">3em</span>;</span><br><span class="line">&#125;</span><br><span class="line">::-webkit-scrollbar-track &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ffcacaff</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">3em</span>;</span><br><span class="line">&#125;</span><br><span class="line">::-webkit-scrollbar &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">8px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="四、修改导航栏、页脚及文章卡片标签的颜色"><a href="#四、修改导航栏、页脚及文章卡片标签的颜色" class="headerlink" title="四、修改导航栏、页脚及文章卡片标签的颜色"></a>四、修改导航栏、页脚及文章卡片标签的颜色</h5><p>同样的操作，在matery.css中找到<code>.bg-color</code>,修改即可：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bg-color</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: </span><br><span class="line">    <span class="built_in">linear-gradient</span>(to right, <span class="number">#3f1b07</span> <span class="number">0%</span>, <span class="number">#3f1b07</span> <span class="number">100%</span>);<span class="comment">/*咖啡色*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="五、修改目录样式（没试过）"><a href="#五、修改目录样式（没试过）" class="headerlink" title="五、修改目录样式（没试过）"></a>五、修改目录样式（没试过）</h5><p>在<code>themes\Matery\layout\_partial\post-detail-toc.ejs</code>，在这里修改:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.toc-widget</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">345px</span>;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>,<span class="number">0.7</span>);</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">10px</span> <span class="number">35px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">15</span>), <span class="number">0</span> <span class="number">5px</span> <span class="number">15px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">07</span>), <span class="number">0</span> <span class="number">2px</span> <span class="number">5px</span> -<span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">1</span>) <span class="meta">!important</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%AB%99%E8%BF%90%E7%BB%B4/">网站运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matery/" rel="tag">matery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BE%8E%E5%8C%96/" rel="tag">美化</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-新sakura博客园皮肤配置-NewSakura"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
@@ -956,66 +1016,6 @@ Mozilla Firefox，中文俗称“火狐”，是一个自由及开放源代码�
 <!-- Table of Contents -->
 
   
-    <article id="post-互质环与最小公倍数的几种求法"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/0709/">互质环与最小公倍数的几种求法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2020/0709/" class="article-date">
-	  <time datetime="2020-07-09T14:30:14.000Z" itemprop="datePublished">七月 9, 2020</time>
-	</a>
-
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
- 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-          <div class="entry-summary">
-          互质环(序列)与最小公倍数的几种求法题目一：互质环现在我们要把1…n这n个数字首尾连接组成一个环，使得相邻元素互质的对数尽可能多，请输出最大对数.
-
-        
-          <p class="article-more-link">
-            <a href="/2020/0709/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%92%E8%B4%A8/" rel="tag">互质</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/" rel="tag">最小公倍数</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -1088,6 +1088,18 @@ Mozilla Firefox，中文俗称“火狐”，是一个自由及开放源代码�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2024/0126/">SpringMVC入门</a></h6>
+              <span>一月 26, 2024</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2024/0118/">SpringBoot原理解析</a></h6>
               <span>一月 18, 2024</span>
             </div>
@@ -1142,18 +1154,6 @@ Mozilla Firefox，中文俗称“火狐”，是一个自由及开放源代码�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2023/1201/">Git入门</a></h6>
-              <span>十二月 1, 2023</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1163,7 +1163,7 @@ Mozilla Firefox，中文俗称“火狐”，是一个自由及开放源代码�
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDE/">IDE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c-c/">c/c++</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/">程序人生</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%AB%99%E8%BF%90%E7%BB%B4/">网站运维</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98/">问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDE/">IDE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c-c/">c/c++</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/">程序人生</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%AB%99%E8%BF%90%E7%BB%B4/">网站运维</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98/">问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1183,7 +1183,7 @@ Mozilla Firefox，中文俗称“火狐”，是一个自由及开放源代码�
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1240,9 +1240,6 @@ Mozilla Firefox，中文俗称“火狐”，是一个自由及开放源代码�
 
 
     <!-- headerblur min height -->
-    
-      var headerblur = document.getElementById("header-blur");
-      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>

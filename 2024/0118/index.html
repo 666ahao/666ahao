@@ -31,7 +31,7 @@
 <meta property="og:description" content="springboot是一种简化springweb开发的框架，类似springmvc，他提供各种默认配置，达到开箱即用、敏捷开发的效果。本文主要介绍springboot的依赖管理、自动配置、web开发、thymeleaf与视图解析、拦截器、文件上传、异常处理、web原生组件注入、整合数据源Druid与Redis、Junit单元测试、spring Acutuator性能监控、高级特性与springbo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-18T01:16:09.000Z">
-<meta property="article:modified_time" content="2024-01-18T02:09:49.943Z">
+<meta property="article:modified_time" content="2024-01-23T11:36:52.441Z">
 <meta property="article:author" content="沧海一粟">
 <meta property="article:tag" content="沧海一粟">
 <meta property="article:tag" content="openkit">
@@ -74,32 +74,10 @@
 
 
   
-  
-  <div class="site-header-image">
-    <img id="originBg" width="100%" alt="Hike News" src="">
-  </div>
-
-  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
-    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
-  </div>
-
-  <script>
-        var imgUrls = "css/images/00.jpg,css/images/01.jpg,css/images/02.jpg,css/images/03.jpg,css/images/04.jpg".split(",");
-        var random = Math.floor((Math.random() * imgUrls.length ));
-        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-          document.getElementById("originBg").src=imgUrls[random];
-          document.getElementById("blurBg").src=imgUrls[random];
-        } else {
-          document.getElementById("originBg").src='/' + imgUrls[random];
-          document.getElementById("blurBg").src='/' + imgUrls[random];
-        }
-    </script>
-
-
 
 
 <header id="allheader" class="site-header" role="banner" 
-   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.3);"  >
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -179,7 +157,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>springboot是一种简化springweb开发的框架，类似springmvc，他提供各种默认配置，达到开箱即用、敏捷开发的效果。本文主要介绍springboot的依赖管理、自动配置、web开发、thymeleaf与视图解析、拦截器、文件上传、异常处理、web原生组件注入、整合数据源Druid与Redis、Junit单元测试、spring Acutuator性能监控、高级特性与springboot启动原理。<span id="more"></span></p>
-<h4 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h4><h5 id="父项目依赖"><a href="#父项目依赖" class="headerlink" title="父项目依赖"></a>父项目依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h4><h5 id="父项目依赖"><a href="#父项目依赖" class="headerlink" title="父项目依赖"></a>父项目依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>作用：依赖管理及版本管理。</p>
 <p>父项目的父项目：</p>
@@ -194,7 +172,7 @@
 <p><code>@SpringBootApplication</code>注解相当于<code>@SpringBootConfiguration</code>、<code>@EnableAutoConfiguration</code>、<code>@ComponentScan</code>注解。</p>
 <p>自动配置按需加载，pom.xml引入依赖后该依赖的自动配置才会生效。配置会映射到某个配置类中，springboot默认配置会映射到名为xxProperties.class配置类中，配置类也是组件。</p>
 <p><code>@Configuration</code>声明配置类，参数proxyBeanMethods默认为true，开启代理，即使用cglib生成代理对象，只会在容器中生成一个组件示例。若为false，则不会生成代理对象，每次调用组件都会创建一个实例对象。</p>
-<p><code>@Bean</code>给容器中添加组件，以类名或方法名做id，返回类型为组件类型，返回值即组件在容器中的示例。<code>@Bean</code>注解的方法名默认作为对象的名字，也可以用name属性定义对象的名字。<code>@bean</code>分为两种模式,一种是Lite Mode(轻量模式),这种模式下被<code>@bean</code>定义的方法需要在<code>@Component</code>下或者原生类下,效果类似于<code>@Component</code>注册在类上的效果。<code>@Configuration</code>下的<code>@bean</code>被称为是Full mode，bean的创建是通过cglib代理生成的被<code>@Configuration</code>定义的类的增强类，因为<code>@Configuration</code>定义的类的bean，默认都是被Spring通过Cglib增强的子类。</p>
+<p><code>@Bean</code>给容器中添加组件，以类名或方法名做id，返回类型为组件类型，返回值即组件在容器中的实例。<code>@Bean</code>注解的方法名默认作为对象的名字，也可以用name属性定义对象的名字。<code>@bean</code>分为两种模式,一种是Lite Mode(轻量模式),这种模式下被<code>@bean</code>定义的方法需要在<code>@Component</code>下或者原生类下,效果类似于<code>@Component</code>注册在类上的效果。<code>@Configuration</code>下的<code>@bean</code>被称为是Full mode，bean的创建是通过cglib代理生成的被<code>@Configuration</code>定义的类的增强类，因为<code>@Configuration</code>定义的类的bean，默认都是被Spring通过Cglib增强的子类。</p>
 <p><code>@Bean</code>注解参数：</p>
 <p>value：定义bean在IOC容器中的id属性。<br>name ：定义bean在IOC容器中的id属性。<br>autowire：装配方式<br>Autowire.NO (默认设置)<br>Autowire.BY_NAME<br>Autowire.BY_TYPE<br>initMethod：指定初始化方法 相当于xml文件中 init-method<br>destroyMethod：指定销毁的方法 相当于xml文件中 destroy-method</p>
 <h5 id="Bean和-Component的区别："><a href="#Bean和-Component的区别：" class="headerlink" title="@Bean和@Component的区别："></a><u><code>@Bean</code>和<code>@Component</code>的区别：</u></h5><p><code>@Bean</code>和<code>@Component</code>都是将Spring Bean添加到Spring Context 中。</p>
@@ -1113,6 +1091,15 @@
     
 <nav id="article-nav">
   
+    <a href="/2024/0126/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          SpringMVC入门
+        
+      </div>
+    </a>
+  
   
     <a href="/2023/1231/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
@@ -1185,9 +1172,6 @@
 
 
     <!-- headerblur min height -->
-    
-      var headerblur = document.getElementById("header-blur");
-      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
