@@ -31,7 +31,7 @@
 <meta property="og:description" content="redis是一个开源的key-value存储系统，支持多种value类型以及丰富的操作，并支持原子性操作，数据可以保存在缓存中，支持数据持久化，周期性写入磁盘记录，单线程多路IO复用，能够实现主从同步，适合高并发、海量数据读写">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-30T09:16:09.000Z">
-<meta property="article:modified_time" content="2024-01-30T09:21:24.878Z">
+<meta property="article:modified_time" content="2024-03-10T03:22:17.491Z">
 <meta property="article:author" content="沧海一粟">
 <meta property="article:tag" content="沧海一粟">
 <meta property="article:tag" content="openkit">
@@ -499,23 +499,25 @@
 <p>从下线的主服务器的从服务器中挑选一个转为主服务器，主机选取策略依次为：选取优先级高的、选取偏移量最大的、选runid最小的。选取主服务器后，向原来的其他从服务器发送slaveof，复制新的master，当已下线的旧主服务器重新上线时，sentinel会发送slaveof命令使其变为从服务器。</p>
 <p>注意：配置中replica-priority越小，优先级越高。偏移量最大表示数据越全！</p>
 <h4 id="redis集群"><a href="#redis集群" class="headerlink" title="redis集群"></a>redis集群</h4><p>实现对redis的水平扩容（启动N个节点，每个节点存储总数据的N分之一），通过分区partition提供可用性，即使节点失效，集群也可以继续处理请求。无中心化集群，任何一个节点都能接收请求，解决容量不够，并发写操作。</p>
-<h5 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h5><p>1）删除持久化数据rdb,aof</p>
-<p>2）制作6个实例，6379，6380，6381，6389，6390，6391</p>
+<h5 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h5><p>1）删除之前的持久化数据rdb,aof</p>
+<p>2）制作6个实例，6379，6380，6381，6389，6390，6391，集群至少6个节点！</p>
 <p>配置各个实例配置文件，redis6379.conf：</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">include</span> <span class="string">/etc/redis.conf</span></span><br><span class="line"><span class="comment">#打开集群模式</span></span><br><span class="line"><span class="attr">cluster-enabled</span> <span class="string">yes</span></span><br><span class="line"><span class="comment">#集群配置文件</span></span><br><span class="line"><span class="attr">cluster-config-file</span> <span class="string">nodes-6379.conf</span></span><br><span class="line"><span class="comment">#节点超时时间，单位毫秒，超过该时间自动进行主从切换</span></span><br><span class="line"><span class="attr">cluster-node-timeout</span> <span class="string">15000</span></span><br><span class="line"><span class="comment">#若某一主从节点都挂掉，那整个集群继续工作，设为yes则集群停止工作</span></span><br><span class="line"><span class="attr">cluster-require-full-coverage</span> <span class="string">no</span></span><br><span class="line"><span class="attr">pidfile</span> <span class="string">/var/run/redis_6379.pid</span></span><br><span class="line"><span class="attr">port</span> <span class="string">6379</span></span><br><span class="line"><span class="attr">dbfilename</span> <span class="string">dump6379.rdb</span></span><br><span class="line"><span class="attr">Appendonly</span> <span class="string">no</span></span><br><span class="line"><span class="attr">daemonize</span> <span class="string">yes</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">include</span> <span class="string">/etc/redis.conf</span></span><br><span class="line"><span class="comment">#打开集群模式</span></span><br><span class="line"><span class="attr">cluster-enabled</span> <span class="string">yes</span></span><br><span class="line"><span class="comment">#集群配置文件</span></span><br><span class="line"><span class="attr">cluster-config-file</span> <span class="string">nodes-6379.conf</span></span><br><span class="line"><span class="comment">#节点超时时间，单位毫秒，超过该时间自动进行主从切换</span></span><br><span class="line"><span class="attr">cluster-node-timeout</span> <span class="string">15000</span></span><br><span class="line"><span class="comment">#若某一主从节点都挂掉，那整个集群继续工作，设为yes则集群停止工作</span></span><br><span class="line"><span class="attr">cluster-require-full-coverage</span> <span class="string">no</span></span><br><span class="line"><span class="attr">pidfile</span> <span class="string">/var/run/redis_6379.pid</span></span><br><span class="line"><span class="comment">#客户端连接端口</span></span><br><span class="line"><span class="attr">port</span> <span class="string">6379</span></span><br><span class="line"><span class="comment">#配置节点的总线端口（节点之间通信的端口，注意必须与节点客户端端口不同，若port=6380,总线端口16380）</span></span><br><span class="line"><span class="attr">cluster-announce-bus-port</span> <span class="string">16379</span></span><br><span class="line"><span class="attr">dbfilename</span> <span class="string">dump6379.rdb</span></span><br><span class="line"><span class="attr">Appendonly</span> <span class="string">no</span></span><br><span class="line"><span class="comment">#后台启动</span></span><br><span class="line"><span class="attr">daemonize</span> <span class="string">yes</span></span><br><span class="line"><span class="comment">#保护模式，开启为yes需要密码</span></span><br><span class="line"><span class="attr">protected-mode</span> <span class="string">no</span></span><br></pre></td></tr></table></figure>
 
-<p>查找替换<code>%s/6379/ 6380</code></p>
+<p>在vim编辑下，快速查找替换命令<code>%s /6379/6380</code></p>
 <p>3）启动6个redis服务器</p>
 <p><code>redis-server redis6379.conf </code></p>
-<p>..</p>
+<p><code>redis-server redis6380.conf ..</code></p>
 <p>4）将6个节点合并</p>
 <p><u>需要ruby环境，进入redis安装目录src下执行命令</u></p>
 <p><code>redis-cli --cluster create --cluster-replicas 1 localhost:6379 localhost:6380.. </code></p>
-<p>其中localhost可替换为真实ip地址，–cluster集群操作。–replicas 1采用最简单方式配置，一台主机一台从机，将分配三个主节点，三个从节点。</p>
-<p>5）连接集群测试</p>
-<p><code>redis-cli -c -p 6379</code></p>
-<p>查看集群节点信息：<code>cluster nodes</code></p>
-<p>6）存入键值</p>
+<p>其中localhost可替换为真实ip地址，–cluster集群操作。–replicas 1采用最简单方式配置（1台从节点），一台主机一台从机，将分配三个主节点，三个从节点。</p>
+<p>5）此时waiting for the cluster  to join…</p>
+<p>需要进入各个节点客户端进行集群通信的建立，<code>redis-cli -c -h localhost -p 6379</code>，进入后执行<code>cluster meet 192.168.56.3 16379 16379</code>，结果输出ok则成功。其他节点类似，执行<code>cluster meet 节点ip  节点总线端口  公共总线端口</code>，如<code>cluster meet 192.168.56.3 16380 16379</code>，注意上述端口一定要能访问，要通过防火墙开放。</p>
+<p>6）上述6个节点弄完后集群测试</p>
+<p><code>redis-cli -c -h [ip] -p 6379</code></p>
+<p>查看集群节点信息：<code>cluster nodes</code>，若集群节点信息输出成功！</p>
+<p>7）存入键值</p>
 <p><code>set k1 v1</code></p>
 <p>注意不在一个插槽范围(节点)的键不能使用mset、mget操作，需要{}分组放入：</p>
 <p><code>mset k1&#123;c1&#125; v1 k2&#123;c1&#125; v2 k3&#123;c1&#125; v3</code></p>
@@ -740,7 +742,7 @@
     });
 </script>
 
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
