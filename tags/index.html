@@ -40,19 +40,23 @@
   
   <link rel="icon" href="/css/images/favicon.ico">
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+   
   
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  
   <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
- <!-- <style type="text/css">
+ <!-- 
+	<style type="text/css">
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>-->
-    
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}
+	</style>
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  -->
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -74,10 +78,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "bg.jpg,css/images/01.jpg,css/images/02.jpg,css/images/03.jpg,css/images/04.jpg".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.3);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -143,21 +169,15 @@
             
                 <a href="#git" title="git" rel="1">git</a>
             
-                <a href="#idea" title="idea" rel="1">idea</a>
-            
-                <a href="#java" title="java" rel="13">java</a>
-            
                 <a href="#IDEA" title="IDEA" rel="1">IDEA</a>
             
                 <a href="#语法" title="语法" rel="1">语法</a>
             
+                <a href="#idea" title="idea" rel="1">idea</a>
+            
+                <a href="#java" title="java" rel="13">java</a>
+            
                 <a href="#IO流体系" title="IO流体系" rel="1">IO流体系</a>
-            
-                <a href="#IO流" title="IO流" rel="2">IO流</a>
-            
-                <a href="#NIO" title="NIO" rel="1">NIO</a>
-            
-                <a href="#反射" title="反射" rel="1">反射</a>
             
                 <a href="#多线程" title="多线程" rel="3">多线程</a>
             
@@ -167,7 +187,15 @@
             
                 <a href="#工具类" title="工具类" rel="1">工具类</a>
             
+                <a href="#IO流" title="IO流" rel="2">IO流</a>
+            
+                <a href="#NIO" title="NIO" rel="1">NIO</a>
+            
                 <a href="#线程通信" title="线程通信" rel="1">线程通信</a>
+            
+                <a href="#泛型" title="泛型" rel="1">泛型</a>
+            
+                <a href="#注解" title="注解" rel="1">注解</a>
             
                 <a href="#构造器重载" title="构造器重载" rel="1">构造器重载</a>
             
@@ -175,7 +203,17 @@
             
                 <a href="#静态初始化块" title="静态初始化块" rel="1">静态初始化块</a>
             
-                <a href="#泛型" title="泛型" rel="1">泛型</a>
+                <a href="#类加载" title="类加载" rel="1">类加载</a>
+            
+                <a href="#List" title="List" rel="1">List</a>
+            
+                <a href="#Queue" title="Queue" rel="1">Queue</a>
+            
+                <a href="#集合类" title="集合类" rel="1">集合类</a>
+            
+                <a href="#接口" title="接口" rel="2">接口</a>
+            
+                <a href="#遍历集合" title="遍历集合" rel="1">遍历集合</a>
             
                 <a href="#java异常" title="java异常" rel="1">java异常</a>
             
@@ -183,23 +221,11 @@
             
                 <a href="#抽象" title="抽象" rel="1">抽象</a>
             
-                <a href="#接口" title="接口" rel="2">接口</a>
-            
-                <a href="#注解" title="注解" rel="1">注解</a>
-            
-                <a href="#类加载" title="类加载" rel="1">类加载</a>
-            
-                <a href="#List" title="List" rel="1">List</a>
-            
-                <a href="#Queue" title="Queue" rel="1">Queue</a>
-            
-                <a href="#Map集合" title="Map集合" rel="1">Map集合</a>
-            
                 <a href="#Set集合" title="Set集合" rel="1">Set集合</a>
             
-                <a href="#集合类" title="集合类" rel="1">集合类</a>
+                <a href="#反射" title="反射" rel="1">反射</a>
             
-                <a href="#遍历集合" title="遍历集合" rel="1">遍历集合</a>
+                <a href="#Map集合" title="Map集合" rel="1">Map集合</a>
             
                 <a href="#SQLserver" title="SQLserver" rel="1">SQLserver</a>
             
@@ -207,37 +233,33 @@
             
                 <a href="#面向对象" title="面向对象" rel="1">面向对象</a>
             
-                <a href="#gitpage" title="gitpage" rel="1">gitpage</a>
-            
-                <a href="#matery" title="matery" rel="2">matery</a>
-            
-                <a href="#博客美化" title="博客美化" rel="1">博客美化</a>
-            
                 <a href="#开源" title="开源" rel="1">开源</a>
             
                 <a href="#博客" title="博客" rel="2">博客</a>
             
-                <a href="#matery主题" title="matery主题" rel="1">matery主题</a>
-            
-                <a href="#音乐播放器" title="音乐播放器" rel="1">音乐播放器</a>
+                <a href="#gitpage" title="gitpage" rel="1">gitpage</a>
             
                 <a href="#String" title="String" rel="1">String</a>
             
                 <a href="#BigDecimal" title="BigDecimal" rel="1">BigDecimal</a>
             
+                <a href="#matery" title="matery" rel="2">matery</a>
+            
+                <a href="#博客美化" title="博客美化" rel="1">博客美化</a>
+            
+                <a href="#美化" title="美化" rel="1">美化</a>
+            
                 <a href="#equals" title="equals" rel="1">equals</a>
             
                 <a href="#内部类" title="内部类" rel="1">内部类</a>
             
-                <a href="#美化" title="美化" rel="1">美化</a>
+                <a href="#matery主题" title="matery主题" rel="1">matery主题</a>
+            
+                <a href="#音乐播放器" title="音乐播放器" rel="1">音乐播放器</a>
             
                 <a href="#优化" title="优化" rel="1">优化</a>
             
                 <a href="#bug问题" title="bug问题" rel="1">bug问题</a>
-            
-                <a href="#浏览器" title="浏览器" rel="1">浏览器</a>
-            
-                <a href="#搜索引擎" title="搜索引擎" rel="1">搜索引擎</a>
             
                 <a href="#ubantu" title="ubantu" rel="1">ubantu</a>
             
@@ -247,15 +269,19 @@
             
                 <a href="#最小公倍数" title="最小公倍数" rel="1">最小公倍数</a>
             
-                <a href="#变量分类" title="变量分类" rel="1">变量分类</a>
+                <a href="#浏览器" title="浏览器" rel="1">浏览器</a>
             
-                <a href="#自动装拆箱" title="自动装拆箱" rel="1">自动装拆箱</a>
+                <a href="#搜索引擎" title="搜索引擎" rel="1">搜索引擎</a>
             
                 <a href="#WSL" title="WSL" rel="1">WSL</a>
             
                 <a href="#Ubuntu" title="Ubuntu" rel="1">Ubuntu</a>
             
                 <a href="#windows" title="windows" rel="1">windows</a>
+            
+                <a href="#变量分类" title="变量分类" rel="1">变量分类</a>
+            
+                <a href="#自动装拆箱" title="自动装拆箱" rel="1">自动装拆箱</a>
             
                 <a href="#数据结构" title="数据结构" rel="1">数据结构</a>
             
@@ -281,7 +307,7 @@
             
                 <a href="#疫情" title="疫情" rel="1">疫情</a>
             
-                <a href="#算法复杂度" title="算法复杂度" rel="1">算法复杂度</a>
+                <a href="#博客简介" title="博客简介" rel="1">博客简介</a>
             
                 <a href="#继承" title="继承" rel="1">继承</a>
             
@@ -291,19 +317,19 @@
             
                 <a href="#不可变类" title="不可变类" rel="1">不可变类</a>
             
-                <a href="#博客简介" title="博客简介" rel="1">博客简介</a>
+                <a href="#算法复杂度" title="算法复杂度" rel="1">算法复杂度</a>
             
                 <a href="#问题" title="问题" rel="2">问题</a>
             
                 <a href="#linux" title="linux" rel="1">linux</a>
-            
-                <a href="#ghelper" title="ghelper" rel="1">ghelper</a>
             
                 <a href="#计算机网络" title="计算机网络" rel="1">计算机网络</a>
             
                 <a href="#网络模型" title="网络模型" rel="1">网络模型</a>
             
                 <a href="#TCP/IP" title="TCP/IP" rel="1">TCP/IP</a>
+            
+                <a href="#ghelper" title="ghelper" rel="1">ghelper</a>
             
         </div> 
         -->
@@ -3292,6 +3318,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
