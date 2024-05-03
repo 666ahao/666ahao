@@ -5,9 +5,10 @@ User-agent: *
 Allow: /archives/
 Allow: /categorioes/
 Allow: /about/
-Allow:/sitemap/
-Allow:/contact/
+Allow: /sitemap/
+Allow: /contact/
+Allow: /
 
 #sitemap
 Sitemap: https://openkit.gitee.io/sitemap.xml
-#Sitemap: https://openkit.gitee.io/baidusitemap.xml
+Sitemap: https://666ahao.github.io/sitemap.xml
